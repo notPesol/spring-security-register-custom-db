@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Register</title>
+
+	<style type="text/css">
+		.error {
+			color: red;
+		}
+	</style>
+
+</head>
+<body>
+	<h1>Register - Form</h1>
+	<hr>
+	<form th:action="@{/register}" method="post" th:object="${userModel}">
+		<div th:if="${errorMsg}">
+			<i class="error" th:text="${errorMsg}"></i>
+		</div>
+		<div>
+			<input th:field="*{firstName}" placeholder="First name">
+			<i th:if="${#fields.hasErrors('firstName')}" class="error" th:errors="*{firstName}">Error text</i>
+		</div>
+		<div>
+			<input th:field="*{lastName}" placeholder="Last name">
+			<i th:if="${#fields.hasErrors('lastName')}" class="error" th:errors="*{lastName}">Error text</i>
+			
+		</div>
+		<div>
+			<input type="email" th:field="*{email}" placeholder="Email">
+			<i th:if="${#fields.hasErrors('email')}" class="error" th:errors="*{email}">Error text</i>
+			
+		</div>
+		<div>
+			<input th:field="*{username}" placeholder="Username">
+			<i th:if="${#fields.hasErrors('username')}" class="error" th:errors="*{username}">Error text</i>
+			
+		</div>
+		<div>
+			<input type="password" th:field="*{password}" placeholder="Password">
+			<i th:if="${#fields.hasErrors('password')}" class="error" th:errors="*{password}">Error text</i>
+			
+		</div>
+		<div>
+			<input type="password" th:field="*{matchingPassword}" placeholder="Confirm password">
+			<i th:if="${#fields.hasErrors('matchingPassword')}" class="error" th:errors="*{matchingPassword}">Error text</i>
+			
+		</div>
+		<div>
+			<input type="submit" value="Submit">
+		</div>
+	</form>
+</body>
+</html>

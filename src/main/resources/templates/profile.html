@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Profile</title>
+</head>
+<body>
+	<h1 th:text="${theUser.firstName + ' Profile'}">Profile</h1>
+	<hr>
+
+	<div>
+
+		<h4>Roles</h4>
+		<ul>
+			<th:block th:each="role : ${theUser.roles}">
+				<li th:text="${role.name}"></li>
+			</th:block>
+		</ul>
+
+	</div>
+
+	<hr>
+
+	<div>
+		<form th:action="@{/logout}" method="post">
+			<input type="submit" value="Logout">
+		</form>
+	</div>
+</body>
+</html>
